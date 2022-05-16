@@ -56,3 +56,33 @@ object Functions extends App{
   println(isPrime(6))
 
 }
+
+
+//That said, let me explain the recursion there. We have
+//
+//factorial(n) = if(n <= 0) 1 else n * factorial(n-1)
+//so for your case factorial(5) is
+//
+//factorial(5) = if (5 <= 0) 1 else 5 * factorial(4) = 5 * factorial(4)
+//so you have to evaluate factorial(4) first:
+//
+//factorial(4) = if (4 <= 0) 1 else 4 * factorial(3) = 4 * factorial(3)
+//so you have to evaluate factorial(3) first:
+//
+//factorial(3) = if (3 <= 0) 1 else 3 * factorial(2) = 3 * factorial(2)
+//so you have to evaluate factorial(2) first:
+//
+//factorial(2) = if (2 <= 0) 1 else 2 * factorial(1) = 2 * factorial(1)
+//so you have to evaluate factorial(1) first:
+//
+//factorial(1) = if (1 <= 0) 1 else 1 * factorial(0) = 1 * factorial(0)
+//so you have to evaluate factorial(0) first:
+//
+//factorial(0) = if (0 <= 0) 1 else 0 * factorial(-1) = 1
+//so you then have to work your way back up and compute the intermediate results up to factorial(5):
+//
+//factorial(1) = 1 * factorial(0) = 1 * 1 = 1
+//factorial(2) = 2 * factorial(1) = 2 * 1 = 2
+//factorial(3) = 3 * factorial(2) = 3 * 2 = 6
+//factorial(4) = 4 * factorial(3) = 4 * 6 = 24
+//factorial(5) = 5 * factorial(4) = 5 * 24 = 120
